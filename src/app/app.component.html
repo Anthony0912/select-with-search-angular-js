@@ -1,0 +1,58 @@
+<form [formGroup]="form" autocomplete="off" class="selected-content">
+  <div class="selected pt-0">
+    <input
+      type="search"
+      id="searchInputid"
+      class="p-2 searchInput form-select"
+      [ngClass]="activeIconSelect"
+      formControlName="inputSearch"
+      (focus)="onFocus()"
+    />
+    <div class="container-drowpdown-items mt-1" [ngClass]="className">
+      <div
+        *ngFor="let actividad of filtrarActividadesEconomicas; let i = index"
+        class="dropdown-item"
+        (click)="selectedOption(actividad)"
+      >
+        {{ actividad.descripcion }}
+      </div>
+      <div
+        *ngIf="filtrarActividadesEconomicas.length <= 0"
+        class="text-center text-muted m-2"
+      >
+        No existen coincidencias
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <div class="container mt-5 w-50">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="state">Actividad economica</label>
+      <ng-select
+        *ngIf="isActivityControlVisible"
+        [items]="actividadesEconomicas"
+        bindLabel="descripcion"
+        bindValue="idActividadEconomica"
+        labelForId="state"
+        [multiple]="false"
+        placeholder="Seleccionar actividad economica"
+        clearAllText="Clear"
+        formControlName="selectedActivityIds"
+        notFoundText="No existen resultados"
+      >
+      </ng-select>
+      <br />
+      <button
+        (click)="toggleCitiesControl()"
+        class="btn btn-sm btn-secondary me-2"
+      >
+        Show/Hide
+      </button>
+      <button (click)="clearCities()" class="btn btn-sm btn-secondary">
+        Clear
+      </button>
+    </div>
+  </form>
+</div> -->
